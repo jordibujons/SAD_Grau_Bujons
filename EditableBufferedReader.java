@@ -1,7 +1,5 @@
 import java.io.*;
 
-import jdk.tools.jlink.internal.SymLinkResourcePoolEntry;
-
 class EditableBufferedReader extends BufferedReader{
 
     public EditableBufferedReader(Reader in) {
