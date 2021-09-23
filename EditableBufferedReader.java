@@ -7,6 +7,7 @@ class EditableBufferedReader extends BufferedReader{
         super(in);
         this.pos = 0;
         this.len = 0;
+        this.line = new line();
     }
 
     public static void setRaw (){
