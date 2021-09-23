@@ -4,7 +4,6 @@ class EditableBufferedReader extends BufferedReader{
 
     public EditableBufferedReader(Reader in) {
         super(in);
-        System.out.println("klk");
     }
 
     public static void setRaw (){
