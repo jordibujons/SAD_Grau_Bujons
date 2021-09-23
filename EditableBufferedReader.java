@@ -1,9 +1,12 @@
 import java.io.*;
 
+import jdk.tools.jlink.internal.SymLinkResourcePoolEntry;
+
 class EditableBufferedReader extends BufferedReader{
 
     public EditableBufferedReader(Reader in) {
         super(in);
+        System.out.println("klk");
     }
 
     public static void setRaw (){
@@ -18,7 +21,6 @@ class EditableBufferedReader extends BufferedReader{
     }
     public String readLine() {
         return null;
-        
     } 
     
     
