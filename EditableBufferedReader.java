@@ -1,13 +1,17 @@
 import java.io.*;
+import java.util.*;
 
 class EditableBufferedReader extends BufferedReader{
 
     public EditableBufferedReader(Reader in) {
         super(in);
+        this.pos = 0;
+        this.len
     }
 
     public static void setRaw (){
-       //posa el terminal en mode raw bhigjfsekadlwfdnfjsgiuhef
+        String[] cmd = {"sh", "-c", "stty -echo raw</dev/tty"};
+        Runtime.getRuntime().exec(cmd);
     }
     public static void unSetRaw (){
         //treu el terminal de mode raw
@@ -20,6 +24,13 @@ class EditableBufferedReader extends BufferedReader{
         return null;
     } 
     
+    // fletxa dreta --> ^[[C
+    //fletxa esquerre --> ^[[D
+    //escape --> ^[
+    //final --> ^[[F  (fn+fletxa dreta)     
+    //inici -->  ^[[H (fn+fletxa esquerre)
+    //insertar --> 
+    //delete --> ^[[3
     
 }
 
