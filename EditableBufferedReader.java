@@ -7,10 +7,10 @@ class EditableBufferedReader extends BufferedReader{
     }
 
     public static void setRaw (){
-       
+       //posa el terminal en mode raw
     }
     public static void unSetRaw (){
-        
+        //treu el terminal de mode raw
     }
     public int read(){
         return 0;
