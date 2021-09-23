@@ -6,7 +6,7 @@ class EditableBufferedReader extends BufferedReader{
     public EditableBufferedReader(Reader in) {
         super(in);
         this.pos = 0;
-        this.len
+        this.len = 0;
     }
 
     public static void setRaw (){
@@ -30,7 +30,7 @@ class EditableBufferedReader extends BufferedReader{
     //final --> ^[[F  (fn+fletxa dreta)     
     //inici -->  ^[[H (fn+fletxa esquerre)
     //insertar --> 
-    //delete --> ^[[3
+    //delete --> ^[[3~
     
 }
 
