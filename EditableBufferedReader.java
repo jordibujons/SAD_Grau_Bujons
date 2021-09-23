@@ -4,7 +4,7 @@ class EditableBufferedReader extends BufferedReader{
 
     public EditableBufferedReader(Reader in) {
         super(in);
-        System.out.println("hola");
+        System.out.println("hola quetal");
     }
 
     public static void setRaw (){
@@ -21,7 +21,7 @@ class EditableBufferedReader extends BufferedReader{
         return null;
         
     } 
-    //probant sincronitzacio github
+    //probant sincronitzacio github 2
     
 }
 
