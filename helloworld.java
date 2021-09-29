@@ -9,3 +9,4 @@ class helloWorld{
         int algoEntero = scan.nextInt();
 }
 }
+

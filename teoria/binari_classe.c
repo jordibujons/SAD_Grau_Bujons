@@ -3,7 +3,7 @@
 int main(){
     int x, i, j, bin[100];
 
-    printf("hola pola gorda");
+    printf("exercici numeros binaris");
 
         while(scanf("%d", &x) != EOF){  //EOF és equivalent a -1
             i=0;
