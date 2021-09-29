@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main(void){
-    int x, i, j, bin[100];
+    int x, i;
 
     printf("exercici numeros binaris, escriu el numero que vols convertir de decimal a binari:");
 
