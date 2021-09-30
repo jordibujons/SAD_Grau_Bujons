@@ -1,9 +1,9 @@
-import java.io.*;
 import java.io.DataInputStream;
 import java.io.EOFException;
+import java.io.IOException;
 
 public class ReadInts {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
 
         DataInputStream in = new DataInputStream(System.in);
         int i = 0;

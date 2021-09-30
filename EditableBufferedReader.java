@@ -11,7 +11,7 @@ class EditableBufferedReader extends BufferedReader{
     private static final int RIGHT = ;
     private static final int START = ;
     private static final int FINAL = ;
-    private static final int INSERT = ; //????
+    private static final int INSERT = ; 
     private static final int DELETE = ;
 
 
@@ -58,7 +58,7 @@ class EditableBufferedReader extends BufferedReader{
                     caracter = START;
                 case '3':                   //falta mirar què passa amb ~
                     caracter = DELETE;      
-                case '?????':               //?????
+                case '2':               //?????
                     caracter = INSERT;
 
 
