@@ -38,7 +38,7 @@ class EditableBufferedReader extends BufferedReader{
     //escape --> ^[
     //final --> ^[[F  (fn+fletxa dreta)     
     //inici -->  ^[[H (fn+fletxa esquerre)
-    //insertar --> ?¿?¿?¿
+    //insertar --> ^[[2~
     //delete --> ^[[3~
 
     public int read() throws IOException{
@@ -56,24 +56,36 @@ class EditableBufferedReader extends BufferedReader{
                     caracter = FINAL;
                 case 'H':
                     caracter = START;
-                case '3':                   //falta mirar què passa amb ~
-                    caracter = DELETE;      
-                case '2':               //?????
-                    caracter = INSERT;
-
-
-
+                case '3':
+                    if ((caracter = super.read()) == '~') caracter = DELETE;
+                    else caracter = '3';   
+                case '2':               
+                    if ((caracter = super.read()) == '~') caracter = INSERT;
+                    else caracter = '2';
             }
-
-
         }   
+        return caracter;
     }
 
 
 
 
-    public String readLine() {
-        return null;
+    public String readLine() throws IOException, InterruptedException {
+        int caracter = 0;
+
+        try {
+            caracter = this.read();
+
+            switch(caracter)
+
+            
+        } catch (EOFException e) {
+            return this.linia.toString();
+        }
+
+
+        }
+
     } 
     
     
