@@ -1,8 +1,9 @@
+package practica1;
 import java.io.*;
 
 class TestReadLine {
   public static void main(String[] args) {
-    BufferedReader in = new EditableBufferedReader(
+    EditableBufferedReader in = new EditableBufferedReader(
       new InputStreamReader(System.in));
     String str = null;
     try {

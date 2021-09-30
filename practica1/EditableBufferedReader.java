@@ -1,3 +1,4 @@
+package practica1;
 import java.io.*;
 import java.util.*;
 
@@ -6,13 +7,15 @@ class EditableBufferedReader extends BufferedReader{
     private Line linia;
     private int pos, len; //pos=posició, len=llargada
 
-    private static final char ESC = ;
-    private static final int LEFT = ;
-    private static final int RIGHT = ;
-    private static final int START = ;
-    private static final int FINAL = ;
-    private static final int INSERT = ; 
-    private static final int DELETE = ;
+    private static final int ESC = 170;
+    private static final int LEFT = 171;
+    private static final int RIGHT = 172;
+    private static final int START = 173;
+    private static final int FINAL = 174;
+    private static final int INSERT = 175; 
+    private static final int DELETE = 176;
+    private static final int BACKSPACE = 127;
+
 
 
 
@@ -23,17 +26,17 @@ class EditableBufferedReader extends BufferedReader{
         this.len = 0;
     }
 
-    public static void setRaw (){
+    public static void setRaw () throws IOException{
         String[] cmd = {"sh", "-c", "stty -echo raw</dev/tty"};
         Runtime.getRuntime().exec(cmd);
     }
-    public static void unSetRaw (){
+    public static void unSetRaw () throws IOException{
         String[] cmd = {"sh", "-c", "stty echo cooked</dev/tty"};
         Runtime.getRuntime().exec(cmd); 
     }
 
 
-    // fletxa dreta --> ^[[C
+    //fletxa dreta --> ^[[C
     //fletxa esquerre --> ^[[D
     //escape --> ^[
     //final --> ^[[F  (fn+fletxa dreta)     
@@ -70,23 +73,21 @@ class EditableBufferedReader extends BufferedReader{
 
 
 
-    public String readLine() throws IOException, InterruptedException {
+    public String readLine() throws IOException {
         int caracter = 0;
 
         try {
             caracter = this.read();
 
-            switch(caracter)
+            //switch(caracter)
 
             
         } catch (EOFException e) {
             return this.linia.toString();
         }
+        return null;
 
 
-        }
+    }
 
-    } 
-    
-    
-}
+} 
