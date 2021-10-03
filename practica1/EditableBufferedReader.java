@@ -5,7 +5,7 @@ import java.util.*;
 class EditableBufferedReader extends BufferedReader{
     
     private Line linia;
-    private int pos, len; //pos=posició, len=llargada
+    //private int pos, len; //pos=posició, len=llargada
 
     private static final int ESC = 170;
     private static final int LEFT = 171;
@@ -23,8 +23,8 @@ class EditableBufferedReader extends BufferedReader{
     public EditableBufferedReader(Reader in) {
         super(in);
         this.linia = new Line();
-        this.pos = 0;
-        this.len = 0;
+        // this.pos = 0;
+        // this.len = 0;
     }
 
     public static void setRaw () throws IOException{
@@ -112,4 +112,4 @@ class EditableBufferedReader extends BufferedReader{
         
         return this.linia.toString();
     }
-} 
+}
