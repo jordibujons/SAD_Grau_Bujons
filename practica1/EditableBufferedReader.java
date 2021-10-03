@@ -15,6 +15,7 @@ class EditableBufferedReader extends BufferedReader{
     private static final int INSERT = 175; 
     private static final int DELETE = 176;
     private static final int BACKSPACE = 127;
+    private static final int ENTER = 10;
 
 
 
@@ -76,18 +77,38 @@ class EditableBufferedReader extends BufferedReader{
     public String readLine() throws IOException {
         int caracter = 0;
 
-        try {
+        do{
             caracter = this.read();
-
-            //switch(caracter)
-
-            
-        } catch (EOFException e) {
-            return this.linia.toString();
-        }
-        return null;
-
-
+            if(caracter >= ESC){
+                switch (caracter) {
+                    case LEFT:
+                        this.linia.left();                        
+                        break;
+                    case RIGHT:
+                        this.linia.right();
+                        break;
+                    case INSERT:
+                        this.linia.switchInsert();
+                        break;
+                    case DELETE:
+                        this.linia.suprCar();
+                        break;
+                    case BACKSPACE:
+                        this.linia.backspaceCar();
+                        break;
+                    case START:
+                        this.linia.startLine();
+                        break;
+                    case FINAL:
+                        this.linia.endLine();
+                        break;
+                    default:
+                        System.out.println("Invalid input");
+                        break;
+                }
+            }
+        }while(caracter != ENTER);
+        
+        return this.linia.toString();
     }
-
 } 
