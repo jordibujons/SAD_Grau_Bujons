@@ -11,7 +11,7 @@ public class Line {
 
     public Line(){
         this.cursor = 0;
-        this.length = 0;
+        this.length = 0;        //length no se si val la pena utilitzarla pq amb els metodes set i add ja es modifica size()
         this.insert = false;
         this.line = new ArrayList<>();
     }

@@ -49,8 +49,9 @@ class EditableBufferedReader extends BufferedReader{
         int caracter = 0;
         caracter = super.read();
 
-        if (caracter != ESC){} //retorna caracter
+        if (caracter != ESC){} 
         else if (caracter == ESC){
+            caracter = super.read();
             switch(caracter = super.read()){
                 case 'C': 
                     caracter = RIGHT;
