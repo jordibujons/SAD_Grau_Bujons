@@ -7,7 +7,7 @@ class EditableBufferedReader extends BufferedReader{
     private Line linia;
     //private int pos, len; //pos=posició, len=llargada
 
-    private static final int ESC = 170;
+    private static final int ESC = 170; // '\033'
     private static final int LEFT = 171;
     private static final int RIGHT = 172;
     private static final int START = 173;
@@ -39,7 +39,7 @@ class EditableBufferedReader extends BufferedReader{
 
     //fletxa dreta --> ^[[C
     //fletxa esquerre --> ^[[D
-    //escape --> ^[
+    //escape --> ^[             -->es considera un únic caracter, no 2, ja que ^ és de control
     //final --> ^[[F  (fn+fletxa dreta)     
     //inici -->  ^[[H (fn+fletxa esquerre)
     //insertar --> ^[[2~
@@ -49,7 +49,9 @@ class EditableBufferedReader extends BufferedReader{
         int caracter = 0;
         caracter = super.read();
 
-        if (caracter != ESC){} 
+        if (caracter != ESC){       //if(caracter != '\033')
+            return caracter;
+        }          
         else if (caracter == ESC){
             caracter = super.read();
             switch(caracter = super.read()){
