@@ -1,17 +1,17 @@
 package practica1;
 
-import java.io.*;
+//import java.io.*;
 import java.util.*;
 
 public class Line {
 
     ArrayList<Integer> line;
-    private int cursor, length;
+    private int cursor;//length;
     private boolean insert;
 
     public Line(){
         this.cursor = 0;
-        this.length = 0;        //length no se si val la pena utilitzarla pq amb els metodes set i add ja es modifica size()
+        //this.length = 0;        //length no se si val la pena utilitzarla pq amb els metodes set i add ja es modifica size()
         this.insert = false;
         this.line = new ArrayList<>();
     }
@@ -32,14 +32,14 @@ public class Line {
         if((this.cursor > 0) && (this.cursor <= this.line.size()) && (this.line.size()>0)){ 
         this.line.remove(this.cursor -1);  
         this.left();   
-        this.length--;       
+        //this.length--;       
         }
     }
 
     public void suprCar(){          //suprimir car de la dreta (tecla supr)    
         if((this.cursor < this.line.size()-1) && (this.line.size()>0)){
             this.line.remove(this.cursor +1);
-            this.length--;
+            //this.length--;
         }  
     }
 
