@@ -4,13 +4,13 @@ import java.io.*;
 
 class key{
     public static final int ESC = '\033';  // '\033'
-    public static final int ESC_ = 170;
-    public static final int LEFT = 171;
-    public static final int RIGHT = 172;
-    public static final int START = 173;
-    public static final int FINAL = 174;
-    public static final int INSERT = 175; 
-    public static final int DELETE = 176;
+    public static final int ESC_ = Integer.MIN_VALUE;
+    public static final int LEFT = Integer.MIN_VALUE+1;
+    public static final int RIGHT = Integer.MIN_VALUE+2;
+    public static final int START = Integer.MIN_VALUE+3;
+    public static final int FINAL = Integer.MIN_VALUE+4
+    public static final int INSERT = -175; 
+    public static final int DELETE = -176;
     public static final int BACKSPACE = 127;
     public static final int ENTER = 10;
     public static final int RAW = 43;  //boto + '\053'
@@ -68,7 +68,7 @@ class EditableBufferedReader extends BufferedReader{
         if (caracter != key.ESC){       //if(caracter != '\033')
             //return caracter;
         }          
-        else if (caracter == key.ESC){
+        else if (caracter == key.ESC){  //comprovar que el seguent caracter es un corchet esqeurre
             caracter = super.read();
             switch(caracter = super.read()){
                 case 'C': 
@@ -102,11 +102,10 @@ class EditableBufferedReader extends BufferedReader{
     public String readLine() throws IOException {
         int caracter = 0;
 
-        try {
-            this.setRaw();
-            do{
+        this.setRaw();
+            while(caracter != key.ENTER){
                 caracter = this.read();
-                if(caracter >= key.ESC_){
+                if(caracter >= key.ESC_){           // és innecessari
                     switch (caracter) {
                         case key.LEFT:
                             this.linia.left();                        
@@ -136,8 +135,8 @@ class EditableBufferedReader extends BufferedReader{
                 }else if(caracter != key.ENTER){
                     this.linia.addCar(caracter);
                 }
-            }while(caracter != key.ENTER);            
-        } catch (Exception e) {}
-      return this.linia.toString();
+            }         
+        this.unSetRaw();
+        return this.linia.toString();
     }
 }
