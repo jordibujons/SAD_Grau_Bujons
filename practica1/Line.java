@@ -5,8 +5,8 @@ import java.util.*;
 
 public class Line {
 
-    ArrayList<Integer> line;
-    private int cursor;//length;
+    ArrayList<Character> line;
+    private int cursor;
     private boolean insert;
 
     public Line(){
