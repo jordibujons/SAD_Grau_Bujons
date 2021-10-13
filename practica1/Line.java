@@ -76,4 +76,15 @@ public class Line {
             this.cursor++;
         }
     }
+
+    public String toString(){
+        String str = "";
+        int i = 0;
+        int aux = 0;
+        for(i=0; i<this.line.size(); i++){
+            aux = this.line.get(i);
+            str += (char)aux;
+        }
+        return str;
+    }
 }

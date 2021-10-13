@@ -7,7 +7,8 @@ class EditableBufferedReader extends BufferedReader{
     private Line linia;
     //private int pos, len; //pos=posició, len=llargada
 
-    private static final int ESC = 170; // '\033'
+    private static final int ESC = '\033';  // '\033'
+    private static final int ESC_ = 170;
     private static final int LEFT = 171;
     private static final int RIGHT = 172;
     private static final int START = 173;
@@ -16,23 +17,24 @@ class EditableBufferedReader extends BufferedReader{
     private static final int DELETE = 176;
     private static final int BACKSPACE = 127;
     private static final int ENTER = 10;
-
+    private static final int RAW = 43;  //boto + '\053'
+    private boolean raw = false;
 
 
 
     public EditableBufferedReader(Reader in) {
         super(in);
         this.linia = new Line();
-        // this.pos = 0;
-        // this.len = 0;
     }
 
-    public static void setRaw () throws IOException{
-        String[] cmd = {"sh", "-c", "stty -echo raw</dev/tty"};
+    public void setRaw () throws IOException, InterruptedException{
+        this.raw=true;
+        String[] cmd = {"sh", "-c", "stty -echo raw </dev/tty"};
         Runtime.getRuntime().exec(cmd);
     }
-    public static void unSetRaw () throws IOException{
-        String[] cmd = {"sh", "-c", "stty echo cooked</dev/tty"};
+    public void unSetRaw () throws IOException, InterruptedException{
+        this.raw=false;
+        String[] cmd = {"sh", "-c", "stty echo cooked </dev/tty"};
         Runtime.getRuntime().exec(cmd); 
     }
 
@@ -50,7 +52,7 @@ class EditableBufferedReader extends BufferedReader{
         caracter = super.read();
 
         if (caracter != ESC){       //if(caracter != '\033')
-            return caracter;
+            //return caracter;
         }          
         else if (caracter == ESC){
             caracter = super.read();
@@ -80,9 +82,10 @@ class EditableBufferedReader extends BufferedReader{
     public String readLine() throws IOException {
         int caracter = 0;
 
+
         do{
             caracter = this.read();
-            if(caracter >= ESC){
+            if(caracter >= ESC_){
                 switch (caracter) {
                     case LEFT:
                         this.linia.left();                        
@@ -105,13 +108,31 @@ class EditableBufferedReader extends BufferedReader{
                     case FINAL:
                         this.linia.endLine();
                         break;
+                    case RAW:
+                        if(raw){
+                                try {
+                                this.setRaw();
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }else{
+                            try {
+                                this.unSetRaw();
+                            } catch (InterruptedException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
+                        
                     default:
                         System.out.println("Invalid input");
                         break;
                 }
+            }else if(caracter != ENTER){
+                this.linia.addCar(caracter);
             }
         }while(caracter != ENTER);
-        
         return this.linia.toString();
     }
 }
