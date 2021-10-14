@@ -3,16 +3,16 @@ import java.io.*;
 //import java.util.*;
 
 class key{
-    public static final int ESC = '\033';  // '\033'
-    public static final int ESC_ = Integer.MIN_VALUE;
-    public static final int LEFT = Integer.MIN_VALUE+1;
-    public static final int RIGHT = Integer.MIN_VALUE+2;
-    public static final int START = Integer.MIN_VALUE+3;
-    public static final int FINAL = Integer.MIN_VALUE+4;
-    public static final int INSERT = Integer.MIN_VALUE+5; 
-    public static final int DELETE = Integer.MIN_VALUE+6;
-    public static final int BACKSPACE = 127;
-    public static final int ENTER = 10;
+    // public static final int ESC = '\033';  // '\033'
+    // public static final int ESC_ = Integer.MIN_VALUE;
+    // public static final int LEFT = Integer.MIN_VALUE+1;
+    // public static final int RIGHT = Integer.MIN_VALUE+2;
+    // public static final int START = Integer.MIN_VALUE+3;
+    // public static final int FINAL = Integer.MIN_VALUE+4;
+    // public static final int INSERT = Integer.MIN_VALUE+5; 
+    // public static final int DELETE = Integer.MIN_VALUE+6;
+    // public static final int BACKSPACE = 127;
+    // public static final int ENTER = 10;
 }
 
 class EditableBufferedReader extends BufferedReader{
@@ -20,17 +20,17 @@ class EditableBufferedReader extends BufferedReader{
     private Line linia;
     //private int pos, len; //pos=posició, len=llargada
 
-    // private static final int ESC = '\033';  // '\033'
-    // private static final int ESC_ = 170;
-    // private static final int LEFT = 171;
-    // private static final int RIGHT = 172;
-    // private static final int START = 173;
-    // private static final int FINAL = 174;
-    // private static final int INSERT = 175; 
-    // private static final int DELETE = 176;
-    // private static final int BACKSPACE = 127;
-    // private static final int ENTER = 10;
-    // private static final int RAW = 43;  //boto + '\053'
+    private static final int ESC = '\033';  // '\033'
+    private static final int ESC_ = 170;
+    private static final int LEFT = 171;
+    private static final int RIGHT = 172;
+    private static final int START = 173;
+    private static final int FINAL = 174;
+    private static final int INSERT = 175; 
+    private static final int DELETE = 176;
+    private static final int BACKSPACE = 127;
+    private static final int ENTER = 10;
+    private static final int RAW = 43;  //boto + '\053'
     
 
 
@@ -64,25 +64,33 @@ class EditableBufferedReader extends BufferedReader{
         int caracter;
         caracter = super.read();
 
-        if (caracter != key.ESC){       //if(caracter != '\033')
+        if (caracter != ESC){
+        //if (caracter != key.ESC){       //if(caracter != '\033')
             //return caracter;
-        }          
-        else if (caracter == key.ESC){  //comprovar que el seguent caracter es un corchet esqeurre
+        }
+        else if (caracter == ESC){          
+       // else if (caracter == key.ESC){  //comprovar que el seguent caracter es un corchet esqeurre
             caracter = super.read();
             switch(caracter = super.read()){
                 case 'C': 
-                    caracter = key.RIGHT;
+                   //caracter = key.RIGHT;
+                   caracter = RIGHT;
                 case 'D':
-                    caracter = key.LEFT;
+                    //caracter = key.LEFT;
+                    caracter = LEFT;
                 case 'F':
-                    caracter = key.FINAL;
+                    //caracter = key.FINAL;
+                    caracter = FINAL;
                 case 'H':
-                    caracter = key.START;
+                    //caracter = key.START;
+                    caracter = START;
                 case '3':
-                    if ((caracter = super.read()) == '~') caracter = key.DELETE;
+                    if ((caracter = super.read()) == '~') caracter = DELETE;
+                    //if ((caracter = super.read()) == '~') caracter = key.DELETE;
                     else caracter = '3';   
                 case '2':               
-                    if ((caracter = super.read()) == '~') caracter = key.INSERT;
+                    if ((caracter = super.read()) == '~') caracter = INSERT;
+                    //if ((caracter = super.read()) == '~') caracter = key.INSERT;
                     else caracter = '2';
             }
         }   
@@ -106,37 +114,49 @@ class EditableBufferedReader extends BufferedReader{
         
             do{
                 caracter = this.read();
-                if(caracter >= key.ESC_){           // és innecessari if i el else if, mirar com treurels
+                if(caracter >= ESC_){
+                //if(caracter >= key.ESC_){           // és innecessari if i el else if, mirar com treurels
                     switch (caracter) {
-                        case key.LEFT:
+                        case LEFT:
+                        //case key.LEFT:
                         this.linia.left();                        
                         break;
-                        case key.RIGHT:
+                        case RIGHT:              
+                        //case key.RIGHT:
                         this.linia.right();
                         break;
-                        case key.INSERT:
+                        case INSERT:
+                       //case key.INSERT:
                         this.linia.switchInsert();
                         break;
-                        case key.DELETE:
+                        case DELETE:
+                        //case key.DELETE:
                         this.linia.suprCar();
                         break;
-                        case key.BACKSPACE:
+                        case BACKSPACE:
+                        //case key.BACKSPACE:
                         this.linia.backspaceCar();
                         break;
-                        case key.START:
+                        case START:
+                        //case key.START:
                         this.linia.startLine();
                         break;
-                        case key.FINAL:
+                        case FINAL:
+                        //case key.FINAL:
                         this.linia.endLine();
                         break;                            
                         default:
                         System.out.println("Invalid input");
                         break;
                     }
-                }else if(caracter != key.ENTER){
+                }else if(caracter != ENTER){
+
+               // }else if(caracter != key.ENTER){
                     this.linia.addCar(caracter);
                 }
-            }while(caracter != key.ENTER);
+            }while(caracter != ENTER);
+           // }while(caracter != key.ENTER);
+           
             //this.unSetRaw();
     //    } catch (InterruptedException e) {
       //      e.printStackTrace();
