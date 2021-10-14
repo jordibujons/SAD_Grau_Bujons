@@ -8,12 +8,11 @@ class key{
     public static final int LEFT = Integer.MIN_VALUE+1;
     public static final int RIGHT = Integer.MIN_VALUE+2;
     public static final int START = Integer.MIN_VALUE+3;
-    public static final int FINAL = Integer.MIN_VALUE+4
-    public static final int INSERT = -175; 
-    public static final int DELETE = -176;
+    public static final int FINAL = Integer.MIN_VALUE+4;
+    public static final int INSERT = Integer.MIN_VALUE+5; 
+    public static final int DELETE = Integer.MIN_VALUE+6;
     public static final int BACKSPACE = 127;
     public static final int ENTER = 10;
-    public static final int RAW = 43;  //boto + '\053'
 }
 
 class EditableBufferedReader extends BufferedReader{
@@ -32,7 +31,7 @@ class EditableBufferedReader extends BufferedReader{
     // private static final int BACKSPACE = 127;
     // private static final int ENTER = 10;
     // private static final int RAW = 43;  //boto + '\053'
-    private boolean raw = false;
+    
 
 
 
@@ -102,41 +101,46 @@ class EditableBufferedReader extends BufferedReader{
     public String readLine() throws IOException {
         int caracter = 0;
 
-        this.setRaw();
-            while(caracter != key.ENTER){
+       // try {
+            //this.setRaw();
+        
+            do{
                 caracter = this.read();
-                if(caracter >= key.ESC_){           // és innecessari
+                if(caracter >= key.ESC_){           // és innecessari if i el else if, mirar com treurels
                     switch (caracter) {
                         case key.LEFT:
-                            this.linia.left();                        
-                            break;
+                        this.linia.left();                        
+                        break;
                         case key.RIGHT:
-                            this.linia.right();
-                            break;
+                        this.linia.right();
+                        break;
                         case key.INSERT:
-                            this.linia.switchInsert();
-                            break;
+                        this.linia.switchInsert();
+                        break;
                         case key.DELETE:
-                            this.linia.suprCar();
-                            break;
+                        this.linia.suprCar();
+                        break;
                         case key.BACKSPACE:
-                            this.linia.backspaceCar();
-                            break;
+                        this.linia.backspaceCar();
+                        break;
                         case key.START:
-                            this.linia.startLine();
-                            break;
+                        this.linia.startLine();
+                        break;
                         case key.FINAL:
-                            this.linia.endLine();
-                            break;                            
+                        this.linia.endLine();
+                        break;                            
                         default:
-                            System.out.println("Invalid input");
-                            break;
+                        System.out.println("Invalid input");
+                        break;
                     }
                 }else if(caracter != key.ENTER){
                     this.linia.addCar(caracter);
                 }
-            }         
-        this.unSetRaw();
+            }while(caracter != key.ENTER);
+            //this.unSetRaw();
+    //    } catch (InterruptedException e) {
+      //      e.printStackTrace();
+        //}         
         return this.linia.toString();
     }
 }

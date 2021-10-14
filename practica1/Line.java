@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Line {
 
-    ArrayList<Character> line;
+    ArrayList<Integer> line;    //ha de ser de tipus Character
     private int cursor;
     private boolean insert;
 
