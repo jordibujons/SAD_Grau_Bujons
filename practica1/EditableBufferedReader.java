@@ -37,15 +37,13 @@ class EditableBufferedReader extends BufferedReader{
         this.linia = new Line();
     }
 
-    public void setRaw () throws IOException, InterruptedException{
-        //this.raw=true;
+    public void setRaw() throws IOException, InterruptedException{
         String[] cmd = {"/bin/sh", "-c", "stty -echo raw </dev/tty"};
-        Runtime.getRuntime().exec(cmd);
+        Runtime.getRuntime().exec(cmd).waitFor();
     }
-    public void unSetRaw () throws IOException, InterruptedException{
-        //this.raw=false;
+    public void unSetRaw() throws IOException, InterruptedException{
         String[] cmd = {"/bin/sh", "-c", "stty echo cooked </dev/tty"};
-        Runtime.getRuntime().exec(cmd); 
+        Runtime.getRuntime().exec(cmd).waitFor(); 
     }
 
 
@@ -107,9 +105,8 @@ class EditableBufferedReader extends BufferedReader{
         int caracter = 0;
 
         try {
-            this.setRaw();
-            while(caracter != key.ENTER){
-                caracter = this.read();
+            setRaw();
+            while((caracter = this.read()) != key.ENTER){
                     switch (caracter) {
                         //case LEFT:
                         case key.LEFT:
@@ -141,11 +138,12 @@ class EditableBufferedReader extends BufferedReader{
                         break;                            
                         default:
                             this.linia.addCar(caracter);
+                            System.out.print((char)caracter);
                         break;
                     }
             }
 
-            this.unSetRaw();
+            unSetRaw();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }         
