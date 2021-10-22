@@ -1,5 +1,4 @@
-package practica1.intents;
-
+package practica1.NO_MVC;
 import java.io.*;
 
 class TestReadLine {

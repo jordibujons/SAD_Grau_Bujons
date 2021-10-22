@@ -1,11 +1,12 @@
-package practica1.intents;
+package practica1.NO_MVC;
 
 //import java.io.*;
 import java.util.*;
 
+
 public class Line {
 
-    ArrayList<Integer> line;    //ha de ser de tipus Character
+    ArrayList<Character> line;
     private int cursor;
     private boolean insert;
 
@@ -18,6 +19,10 @@ public class Line {
 
     public int getPos(){
         return this.cursor;
+    }
+
+    public int getLength(){
+        return this.line.size();
     }
 
     public boolean getInsert(){
@@ -63,16 +68,17 @@ public class Line {
         }
     }
 
-    public void addCar(int car){
+    public void addCar(char car){
         if(this.insert){            //tecla insert premuda --> si insert == true
             if(this.cursor < this.line.size()){
-                this.line.set(this.cursor,car);
+                this.line.set(this.cursor, car);
+                this.cursor++;
             }else{
-                this.line.add(this.cursor,car);
+                this.line.add(this.cursor, car);
                 this.cursor++;
             }
         }else{                      //tecla insert no premuda --> si insert == false
-            this.line.add(this.cursor,car);
+            this.line.add(this.cursor, car);
             this.cursor++;
         }
     }

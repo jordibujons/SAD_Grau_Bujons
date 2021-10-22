@@ -1,4 +1,4 @@
-package practica1;
+package practica1.NO_MVC;
 import java.io.*;
 //import java.util.*;
 
