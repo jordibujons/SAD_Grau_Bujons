@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Line {
 
-    ArrayList<Character> line;    //ha de ser de tipus Character
+    ArrayList<Character> line;
     private int cursor;
     private boolean insert;
 
@@ -72,6 +72,7 @@ public class Line {
         if(this.insert){            //tecla insert premuda --> si insert == true
             if(this.cursor < this.line.size()){
                 this.line.set(this.cursor, car);
+                this.cursor++;
             }else{
                 this.line.add(this.cursor, car);
                 this.cursor++;

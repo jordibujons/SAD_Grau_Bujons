@@ -59,11 +59,9 @@ class EditableBufferedReader extends BufferedReader{
                         return caracter = key.LEFT;
                         //caracter = LEFT;
                     case 'F':
-                        System.out.print("FINAL");
                         return caracter = key.FINAL;
                         //caracter = FINAL;
                     case 'H':
-                        System.out.print("START");
                         return caracter = key.START;
                         //caracter = START;
                     case '3':
@@ -105,7 +103,7 @@ class EditableBufferedReader extends BufferedReader{
                             this.linia.right();
                         break;
                         case (char) key.INSERT:
-                             this.linia.switchInsert();
+                            this.linia.switchInsert();
                         break;
                         case (char) key.DELETE:
                             updateViewDelete(this.linia);
@@ -125,7 +123,8 @@ class EditableBufferedReader extends BufferedReader{
                         break;                            
                         default:
                             this.linia.addCar(caracter);
-                            System.out.print((char)caracter);
+                            updateViewAddCar(this.linia, caracter);
+                            //System.out.print((char)caracter);
                         break;
                     }
             }
@@ -165,11 +164,11 @@ class EditableBufferedReader extends BufferedReader{
     }
 
     public void updateViewStart (Line linia){
-        System.out.print("\033[H");
+        System.out.print("\033[" + linia.getPos() +"D");
     }
 
     public void updateViewFinal (Line linia){
-        System.out.print("\033["+linia.getLength()+"G");
+        System.out.print("\033["+(linia.getLength()-linia.getPos())+"C");
     }
 
     public void updateViewInsert (Line linia){
@@ -178,7 +177,12 @@ class EditableBufferedReader extends BufferedReader{
         }
     }
 
-    
-
-
+    public void updateViewAddCar(Line linia, char car){
+        if(linia.getInsert() || linia.getPos() == linia.getLength()){
+            System.out.print(car);
+        }
+        else{
+            System.out.print("\033[@" + car);
+        }
+    }
 }
