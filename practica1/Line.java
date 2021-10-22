@@ -3,9 +3,10 @@ package practica1;
 //import java.io.*;
 import java.util.*;
 
+
 public class Line {
 
-    ArrayList<Integer> line;    //ha de ser de tipus Character
+    ArrayList<Character> line;    //ha de ser de tipus Character
     private int cursor;
     private boolean insert;
 
@@ -18,6 +19,10 @@ public class Line {
 
     public int getPos(){
         return this.cursor;
+    }
+
+    public int getLength(){
+        return this.line.size();
     }
 
     public boolean getInsert(){
@@ -63,7 +68,7 @@ public class Line {
         }
     }
 
-    public void addCar(int car){
+    public void addCar(char car){
         if(this.insert){            //tecla insert premuda --> si insert == true
             if(this.cursor < this.line.size()){
                 this.line.set(this.cursor, car);
