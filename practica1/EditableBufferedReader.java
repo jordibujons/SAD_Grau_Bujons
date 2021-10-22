@@ -3,7 +3,7 @@ import java.io.*;
 //import java.util.*;
 
 class key{
-    public static final int ESC = '\033';  // '\033'
+    public static final int ESC = 27;  // '\033'
     public static final int ESC_ = Integer.MIN_VALUE;
     public static final int LEFT = Integer.MIN_VALUE+1;
     public static final int RIGHT = Integer.MIN_VALUE+2;
@@ -12,26 +12,13 @@ class key{
     public static final int INSERT = Integer.MIN_VALUE+5; 
     public static final int DELETE = Integer.MIN_VALUE+6;
     public static final int BACKSPACE = 127;
-    public static final int ENTER = 10;
+    public static final int ENTER = 13;
 }
 
 class EditableBufferedReader extends BufferedReader{
     
     private Line linia;
-    //private int pos, len; //pos=posició, len=llargada
-
-    // private static final int ESC = '\033';  // '\033'
-    // private static final int ESC_ = 170;
-    // private static final int LEFT = 171;
-    // private static final int RIGHT = 172;
-    // private static final int START = 173;
-    // private static final int FINAL = 174;
-    // private static final int INSERT = 175; 
-    // private static final int DELETE = 176;
-    // private static final int BACKSPACE = 127;
-    // private static final int ENTER = 10;
-
-
+    
     public EditableBufferedReader(Reader in) {
         super(in);
         this.linia = new Line();
@@ -57,38 +44,38 @@ class EditableBufferedReader extends BufferedReader{
 
     public int read() throws IOException{
         int caracter;
-        caracter = super.read();
-
-        //if (caracter != ESC){
-        if (caracter != key.ESC){       //if(caracter != '\033')
-            //return caracter;
+    
+        if ((caracter = super.read()) != key.ESC){       
+            return caracter;
         }
-        //else if (caracter == ESC){          
-        else if (caracter == key.ESC){  //comprovar que el seguent caracter es un corchet esqeurre
-            caracter = super.read();
-            switch(caracter = super.read()){
-                case 'C': 
-                   caracter = key.RIGHT;
-                   //caracter = RIGHT;
-                case 'D':
-                    caracter = key.LEFT;
-                    //caracter = LEFT;
-                case 'F':
-                    caracter = key.FINAL;
-                    //caracter = FINAL;
-                case 'H':
-                    caracter = key.START;
-                    //caracter = START;
-                case '3':
-                    //if ((caracter = super.read()) == '~') caracter = DELETE;
-                    if ((caracter = super.read()) == '~') caracter = key.DELETE;
-                    else caracter = '3';   
-                case '2':               
-                    //if ((caracter = super.read()) == '~') caracter = INSERT;
-                    if ((caracter = super.read()) == '~') caracter = key.INSERT;
-                    else caracter = '2';
-            }
-        }   
+
+        switch(caracter = super.read()){
+            case '[':
+                switch(caracter = super.read()){
+                    case 'C': 
+                        return caracter = key.RIGHT;
+                    //caracter = RIGHT;
+                    case 'D':
+                        return caracter = key.LEFT;
+                        //caracter = LEFT;
+                    case 'F':
+                        System.out.print("FINAL");
+                        return caracter = key.FINAL;
+                        //caracter = FINAL;
+                    case 'H':
+                        System.out.print("START");
+                        return caracter = key.START;
+                        //caracter = START;
+                    case '3':
+                        if ((caracter = super.read()) == '~') return caracter = key.DELETE;
+                        else return caracter = '3';   
+                    case '2':               
+                        if ((caracter = super.read()) == '~') return caracter = key.INSERT;
+                        else return caracter = '2';
+                    default:
+                        return caracter;
+                }
+        } 
         return caracter;
     }
     /*
@@ -102,38 +89,38 @@ class EditableBufferedReader extends BufferedReader{
 
 
     public String readLine() throws IOException {
-        int caracter = 0;
+        char caracter;
 
         try {
             setRaw();
-            while((caracter = this.read()) != key.ENTER){
+            while((caracter = (char) this.read()) != key.ENTER){
                     switch (caracter) {
                         //case LEFT:
-                        case key.LEFT:
+                        case (char) key.LEFT:
+                            updateViewFletxaEsquerre(this.linia);
                             this.linia.left();                        
-                        break;
-                        //case RIGHT:              
-                        case key.RIGHT:
+                        break;              
+                        case (char) key.RIGHT:
+                            updateViewFletxaDreta(this.linia);
                             this.linia.right();
                         break;
-                       //case INSERT:
-                        case key.INSERT:
+                        case (char) key.INSERT:
                              this.linia.switchInsert();
                         break;
-                        //case DELETE:
-                        case key.DELETE:
+                        case (char) key.DELETE:
+                            updateViewDelete(this.linia);
                             this.linia.suprCar();
                         break;
-                        //case BACKSPACE:
-                        case key.BACKSPACE:
+                        case (char) key.BACKSPACE:
+                            updateViewBackspace(this.linia);
                             this.linia.backspaceCar();
                         break;
-                        //case START:
-                        case key.START:
+                        case (char) key.START:
+                            updateViewStart(this.linia);
                             this.linia.startLine();
                         break;
-                        //case FINAL:
-                        case key.FINAL:
+                        case (char) key.FINAL:
+                            updateViewFinal(this.linia);
                             this.linia.endLine();
                         break;                            
                         default:
@@ -149,4 +136,49 @@ class EditableBufferedReader extends BufferedReader{
         }         
         return this.linia.toString();
     }
+
+    public void updateViewFletxaDreta (Line linia){
+        if (linia.getPos() < linia.getLength()){
+            System.out.print("\033[C");
+        }
+    }
+
+    public void updateViewFletxaEsquerre (Line linia){
+        if (linia.getPos() > 0){
+            System.out.print("\033[D");
+        }
+    }
+
+    public void updateViewDelete (Line linia){
+        if ((linia.getPos() < linia.getLength()-1) && (linia.getLength()>0)){
+            System.out.print("\033[C");
+            System.out.print("\033[P");
+            System.out.print("\033[D");
+        }
+    }
+
+    public void updateViewBackspace (Line linia){
+        if ((linia.getPos() > 0) && (linia.getPos() <= linia.getLength()) && (linia.getLength()>0)){
+            System.out.print("\033[D");
+            System.out.print("\033[P");
+        }
+    }
+
+    public void updateViewStart (Line linia){
+        System.out.print("\033[H");
+    }
+
+    public void updateViewFinal (Line linia){
+        System.out.print("\033["+linia.getLength()+"G");
+    }
+
+    public void updateViewInsert (Line linia){
+        if (linia.getPos() > 0){
+            System.out.print("\033[D");
+        }
+    }
+
+    
+
+
 }
