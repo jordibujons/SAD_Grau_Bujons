@@ -43,35 +43,62 @@ public class Line  extends Observable{
         if((this.cursor > 0) && (this.cursor <= this.line.size()) && (this.line.size()>0)){ 
         this.line.remove(this.cursor -1);  
         this.left();   
-        //this.length--;       
+        accio[0] = "true";
+        accio[1] = Constants.ERASE_ANSI;
+        this.setChanged();
+        this.notifyObservers(accio);       
         }
     }
 
     public void suprCar(){          //suprimir car de la dreta (tecla supr)    
         if((this.cursor < this.line.size()-1) && (this.line.size()>0)){
             this.line.remove(this.cursor +1);
-            //this.length--;
+            accio[0] = "true";
+            accio[1] = Constants.ERASE_ANSI;
+            this.setChanged();
+            this.notifyObservers(accio);
         }  
     }
 
     public void startLine(){
+        int posicio_actual = this.cursor;
         this.cursor = 0;
+        accio[0] = "true";
+        accio[1] = "\033[" + posicio_actual +"D";
+        this.setChanged();
+        this.notifyObservers(accio);
     }
 
     public void endLine(){
-        this.cursor = this.line.size();
+        if (this.cursor < this.line.size()){
+            int posicio_actual = this.line.size() - this.cursor;
+            this.cursor = this.line.size();
+            accio[0] = "true";
+            accio[1] = "\033["+posicio_actual+"C"; 
+            this.setChanged();
+            this.notifyObservers(accio);
+        }
     }
 
     public void right(){
         if(this.cursor < this.line.size()){
             this.cursor++;
+            accio[0] = "true";
+            accio[1] = Constants.RIGHT_ANSI;
+            this.setChanged();
+            this.notifyObservers(accio);
         }
     }
 
     public void left(){
         if(this.cursor > 0){
             this.cursor--;
+            accio[0] = "true";
+            accio[1] = Constants.LEFT_ANSI;
+            this.setChanged();
+            this.notifyObservers(accio);
         }
+        
     }
 
     public void addCar(char car){
@@ -79,13 +106,26 @@ public class Line  extends Observable{
             if(this.cursor < this.line.size()){
                 this.line.set(this.cursor, car);
                 this.cursor++;
-            }else{
+                accio[0]="true";
+                accio[1] = "" + car;
+                this.setChanged();
+                this.notifyObservers(accio);
+            }else{ //OJO QUE AIXO POTSER NO ESTÀ BÉ
                 this.line.add(this.cursor, car);
                 this.cursor++;
+                accio[0]="true";
+                accio[1] = "" + car;
+                this.setChanged();
+                this.notifyObservers(accio);
+                
             }
         }else{                      //tecla insert no premuda --> si insert == false
             this.line.add(this.cursor, car);
             this.cursor++;
+            accio[0] = "true";//"insertChar";
+            accio[1] = Constants.NO_INSERT_ANSI+car;  /*ANSI.INSERT + */
+            this.setChanged();
+            this.notifyObservers(accio);
         }
     }
 

@@ -17,4 +17,5 @@ public class Constants {
     public static final String RIGHT_ANSI = "\033[C";
     public static final String ERASE_ANSI = "\033[P"; //la P borra el caracter on estic
     public static final String NO_INSERT_ANSI = "\033[@";
+    public final static String BACKSPACE_ANSI = LEFT_ANSI + ERASE_ANSI;
 }
