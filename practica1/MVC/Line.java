@@ -110,7 +110,7 @@ public class Line  extends Observable{
                 accio[1] = "" + car;
                 this.setChanged();
                 this.notifyObservers(accio);
-            }else{ //OJO QUE AIXO POTSER NO ESTÀ BÉ
+            }else{ 
                 this.line.add(this.cursor, car);
                 this.cursor++;
                 accio[0]="true";
