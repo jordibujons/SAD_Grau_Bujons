@@ -101,9 +101,10 @@ public class Calculadora{
     static boolean parseDouble(Scanner sc, MutableDouble r){
         String oper = sc.findWithinHorizon("\\G\\p{javaWhitespace}*[+-]?\\d*\\+(?:-[eE][+-]?\\d+)?", 0);
         if(oper==null){
-
+            return false;
         }
-        return false;
+        r.setValue(Double.parseDouble(oper));
+        return true;
     }
 
     static boolean parseOp(Scanner sc, String str, char[] ch){
