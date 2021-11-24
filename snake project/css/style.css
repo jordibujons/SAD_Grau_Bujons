@@ -1,3 +1,6 @@
+*{
+    font-family:'Gill Sans', monospace;
+}
 body{ /*configuració background*/
     height: 100vh; /*vh i vw fan que el background s'ajusti al tamany de la pantalla en % */
     width: 100vw;
@@ -5,7 +8,7 @@ body{ /*configuració background*/
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: black;
+    background-color: rgb(196, 195, 195);
 }
 
 #GameBoard { /*configuració taulell de joc*/
@@ -17,6 +20,15 @@ body{ /*configuració background*/
     background: linear-gradient(rgb(54, 192, 54), green);
     border: .50vmin solid rgb(255, 252, 252);
 }
+/*#start, .boardInfo{
+    font-size: 25;
+}
+
+ .boardInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; 
+}*/
 
 .snakeHead{
     background-image: url("images/cabeza.png");
