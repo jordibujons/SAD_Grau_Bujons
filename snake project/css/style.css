@@ -9,13 +9,13 @@ body{ /*configuració background*/
 }
 
 #GameBoard { /*configuració taulell de joc*/
-    height: 100vmin; /*vmin fa que quan modifiquem el tamany de la finestra, s'ajusti a qualsevol llargada o amplada de finestra per veure sempre el taulell sencer(quadrat)*/
-    width: 100vmin;
+    height: 90vmin; /*vmin fa que quan modifiquem el tamany de la finestra, s'ajusti a qualsevol llargada o amplada de finestra per veure sempre el taulell sencer(quadrat)*/
+    width: 90vmin;
     display: grid;
     grid-template-columns: repeat(20, 1fr); /*creant 20 columnes mateixa mida*/
     grid-template-rows: repeat(20, 1fr); /*creant 20 files mateixa mida*/
     background: linear-gradient(rgb(54, 192, 54), green);
-    border: 2px solid white;
+    border: .50vmin solid rgb(255, 252, 252);
 }
 
 .snakeHead{
