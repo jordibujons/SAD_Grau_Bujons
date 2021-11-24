@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body{ /*configuració background*/
+            height: 100vh; /*vh i vw fan que el background s'ajusti al tamany de la pantalla en % */
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: black;
+        }
+
+        #GameBoard { /*configuració taulell de joc*/
+            height: 100vmin; /*vmin fa que quan modifiquem el tamany de la finestra, s'ajusti a qualsevol llargada o amplada de finestra per veure sempre el taulell sencer(quadrat)*/
+            width: 100vmin;
+            display: grid;
+            grid-template-columns: repeat(20, 1fr); /*creant 20 columnes mateixa mida*/
+            grid-template-rows: repeat(20, 1fr); /*creant 20 files mateixa mida*/
+            background-color: rgb(54, 192, 54);
+        }
+
+        .snakeHead{
+            background-image: url("images/cabeza.png");
+        }
+
+        .snakeBody{
+            background-image: url("images/cuerpo.png");
+        }
+
+        .apple{
+            background-image: url("images/manzana.png");
+        }
+    </style>
+    <script src="main.js" defer type="text/javascript"></script>
+</head>
+<body>
+    <div id="GameBoard"></div>
+</body>
+</html>
