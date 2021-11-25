@@ -31,11 +31,11 @@ body{ /*configuració background*/
 }*/
 
 .snakeHead{
-    background-image: url("images/cabeza.png");
+    background-image: url("../images/cabeza.png");
 }
 .snakeBody{
-    background-image: url("images/cuerpo.png");
+    background-image: url("../images/cuerpo.png");
 }
 .apple{
-    background-image: url("images/manzana.png");
+    background-image: url("../images/manzana.png");
 }

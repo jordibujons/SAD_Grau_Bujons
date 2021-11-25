@@ -6,7 +6,7 @@ const foodSound = new Audio('sounds/BiteApple.mp3')
 const gameOverSound = new Audio('sounds/GameOver.mp3')
 const moveSound = new Audio('sounds/move.mp3')
 
-
+const gameBoard = document.getElementById('GameBoard');
 
 var temps = 0;
 var loop = setInterval(GameLoop, 1000 / SNAKE_SPEED)
@@ -29,7 +29,7 @@ function update(){
 
 }
 function draw(){
-    drawSnake();
+    drawSnake(gameBoard);
 
 }
 //Main logic coemça aqui
