@@ -1,3 +1,4 @@
+import './moviments.js'
 export const SNAKE_SPEED = 1
 const SNAKE_BODY = [
     {x: 9, y: 10},
@@ -6,12 +7,13 @@ const SNAKE_BODY = [
 ]     //posició (10,10) és el centre del taulell
 
 export function update(){
-    for (let i = SNAKE_BODY.length; i <= 0; i--) {
-        SNAKE_BODY[i+1] = SNAKE_BODY[i]
-    }
+    
+    // for (let i = SNAKE_BODY.length - 2; i >= 0; i--) {
+    //     SNAKE_BODY[i+1] = {...SNAKE_BODY[i]}
+    // }
 
-    SNAKE_BODY[0].x += 1
-    SNAKE_BODY[0].y += 0
+    // SNAKE_BODY[0].y += 1
+    // SNAKE_BODY[0].x += 0
 }
 export function draw(GameBoard){
     SNAKE_BODY.forEach(segment => {
