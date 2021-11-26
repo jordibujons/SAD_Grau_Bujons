@@ -34,7 +34,9 @@ body{ /*configuració background*/
     background-image: url("../images/cabeza.png");
 }
 .snakeBody{
-    background-image: url("../images/cuerpo.png");
+    /*background-image: url("../images/cuerpo.png");*/
+    background-color: aqua;
+    border: .25vmin solid black; ;
 }
 .apple{
     background-image: url("../images/manzana.png");
