@@ -1,5 +1,5 @@
 import { update as updateSnake, draw as drawSnake, SNAKE_SPEED } from './snake.js'
-import {keyUp} from'./movements.js'
+
 //Game Constants
 
 //let direction = {x: 0, y:0}
@@ -33,9 +33,7 @@ function GameLoop(ctime){
         draw()
     
 
-    if(keyUp){
-        console.log("tecla amunt")
-    }
+        
 }    
     window.requestAnimationFrame(GameLoop)
 

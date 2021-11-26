@@ -8,12 +8,6 @@ const SNAKE_BODY = [
 
 export function update(){
     
-    // for (let i = SNAKE_BODY.length - 2; i >= 0; i--) {
-    //     SNAKE_BODY[i+1] = {...SNAKE_BODY[i]}
-    // }
-
-    // SNAKE_BODY[0].y += 1
-    // SNAKE_BODY[0].x += 0
     for (let i = SNAKE_BODY.length-2; i >= 0; i--) {    //l'última posició de la serp ens és igual pq desaperaixerà. Com que el nostre vector (serp) comença a 0, si fem (lenght -2) estarem apuntant a la penúltima pos de la serp 
         SNAKE_BODY[i+1] = {...SNAKE_BODY[i]}    //{... } fer nou objecte sense que agafi referències del vell
     }
@@ -30,3 +24,5 @@ export function draw(GameBoard){
         GameBoard.appendChild(snakeElement)
         })
 }
+
+
