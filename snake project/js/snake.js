@@ -1,10 +1,14 @@
 import {moviment} from'./movements.js'
 import { POS_APPLE, pomaMenjada, update as updateApple, draw as drowApple } from './apple.js'
 
-export const SNAKE_SPEED = 3
+export const SNAKE_SPEED = 5
 export const SNAKE_BODY = [
-    {x: 13, y: 13}                      //posició (13,13) és el centre del taulell
+    {x: 12, y: 13},                      //posició (13,13) és el centre del taulell
+    {x: 13, y: 13},
+    {x: 14, y: 13} 
+
 ]     
+export var score = 0
 const foodSound = new Audio('sounds/biteApple.mp3')
 
 export function update(){
@@ -19,7 +23,8 @@ export function update(){
     if (SNAKE_BODY[0].x == POS_APPLE.x && SNAKE_BODY[0].y == POS_APPLE.y) {     //comprovem que el cap coincideixi amb pos poma
         //pomaMenjada = true
         updateApple()        
-        foodSound.play()  
+        foodSound.play()
+        score++  
     }
 }
 export function draw(GameBoard){
