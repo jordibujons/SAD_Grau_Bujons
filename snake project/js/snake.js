@@ -6,12 +6,12 @@ const SNAKE_BODY = [
 ]     //posició (10,10) és el centre del taulell
 
 export function update(){
-    for (let i = 0; i < SNAKE_BODY.length; i++) {
+    for (let i = SNAKE_BODY.length; i <= 0; i--) {
         SNAKE_BODY[i+1] = SNAKE_BODY[i]
-        
     }
 
-
+    SNAKE_BODY[0].x += 1
+    SNAKE_BODY[0].y += 0
 }
 export function draw(GameBoard){
     SNAKE_BODY.forEach(segment => {
