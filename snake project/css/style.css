@@ -15,8 +15,8 @@ body{ /*configuració background*/
     height: 90vmin; /*vmin fa que quan modifiquem el tamany de la finestra, s'ajusti a qualsevol llargada o amplada de finestra per veure sempre el taulell sencer(quadrat)*/
     width: 90vmin;
     display: grid;
-    grid-template-columns: repeat(20, 1fr); /*creant 20 columnes mateixa mida*/
-    grid-template-rows: repeat(20, 1fr); /*creant 20 files mateixa mida*/
+    grid-template-columns: repeat(25, 1fr); /*creant 20 columnes mateixa mida*/
+    grid-template-rows: repeat(25, 1fr); /*creant 20 files mateixa mida*/
     background: linear-gradient(rgb(54, 192, 54), green);
     border: .50vmin solid rgb(255, 252, 252);
 }
@@ -31,7 +31,9 @@ body{ /*configuració background*/
 }*/
 
 .snakeHead{
-    background-image: url("../images/cabeza.png");
+    /*background-image: url("../images/cabeza.png");*/
+    background-color: rgb(0, 38, 255);
+    border: .25vmin solid black; ;
 }
 .snakeBody{
     /*background-image: url("../images/cuerpo.png");*/
@@ -39,5 +41,7 @@ body{ /*configuració background*/
     border: .25vmin solid black; ;
 }
 .apple{
-    background-image: url("../images/manzana.png");
+    /*background-image: url("../images/manzana.png");*/
+    background-color: red;
+    border: .25vmin solid black; ;
 }
