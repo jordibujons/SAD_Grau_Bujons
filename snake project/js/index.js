@@ -20,16 +20,12 @@ function GameLoop(ctime){
 //Game Functions
 
 function update(){
-    updateSnake();
-    // if(pomaMenjada==true){
-    //     updateApple();
-    // }
-
+    updateSnake()
 }
 function draw(){
     gameBoard.innerHTML = ''
-    drawSnake(gameBoard);
-    drawApple(gameBoard);
+    drawSnake(gameBoard)
+    drawApple(gameBoard)
 
 }
 

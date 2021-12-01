@@ -9,8 +9,8 @@ export function update(){
 
     do{
         posOcupada = false
-        let randomX = Math.floor(Math.random() * 25)
-        let randomY = Math.floor(Math.random() * 25)
+        let randomX = Math.floor(Math.random() * 25) +1     //numero random entre 0 i 24 +1, per tant, num entre 1 i 25
+        let randomY = Math.floor(Math.random() * 25) +1
         POS_APPLE.x = randomX
         POS_APPLE.y = randomY
 
@@ -33,3 +33,4 @@ export function draw(GameBoard){
         appleElement.classList.add('apple')
         GameBoard.appendChild(appleElement)
 }
+
