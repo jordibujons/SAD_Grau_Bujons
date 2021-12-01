@@ -13,7 +13,7 @@ const SPACE_BAR = 32
 export var invalidMovement = false
 export let moviment = { x: 0, y: 0 }
 
-window.addEventListener('keydown', function (event) {
+window.addEventListener('keydown', function (event) {   //utilitzem window no element
 
     switch (event.keyCode) {
         case ARROW_UP:
@@ -124,7 +124,3 @@ export function BodyCrash() {       //NO VAAAA LOCO
     
     }
 }
-
-
-
-

@@ -23,10 +23,8 @@ function update(){
     updateSnake()
 }
 function draw(){
-    gameBoard.innerHTML = ''
+    gameBoard.innerHTML = ''    //anem borrant el camí per on passem, sense això la serp es infinita
     drawSnake(gameBoard)
     drawApple(gameBoard)
 
 }
-
-//Main logic coemça aqui

@@ -21,19 +21,20 @@ export function update() {
         SNAKE_BODY[i + 1] = { ...SNAKE_BODY[i] }    //{... } fer nou objecte sense que agafi referències del vell
     }
 
+    //quan xoquem amb borde o amb cos
     if (BorderCrash() == true || BodyCrash() == true) {
         //game over
         gameOverSound.play()
         alert("GameOver")
-    } else {
+    } else {    //serp avança
         SNAKE_BODY[0].x += moviment.x
         SNAKE_BODY[0].y += moviment.y
+        //guardem última posició
         LAST_MOVE.x = moviment.x
         LAST_MOVE.y = moviment.y
     }
 
-
-
+    //quan mengem poma
     if (SNAKE_BODY[0].x == POS_APPLE.x && SNAKE_BODY[0].y == POS_APPLE.y) {     //comprovem que el cap coincideixi amb pos poma
         updateApple()
         growUpSnake()
@@ -41,9 +42,9 @@ export function update() {
         score++
     }
 }
+
 export function draw(GameBoard) {
     SNAKE_BODY.forEach((seg, index) => {
-
         const snakeElement = document.createElement('div')
         snakeElement.style.gridRowStart = seg.y
         snakeElement.style.gridColumnStart = seg.x
@@ -55,6 +56,7 @@ export function draw(GameBoard) {
         GameBoard.appendChild(snakeElement)
     })
 }
+
 
 function growUpSnake() {
 
