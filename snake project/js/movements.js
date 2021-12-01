@@ -88,7 +88,7 @@ export function BorderCrash() {
 
 }
 
-export function BodyCrash() {
+export function BodyCrash() {       //NO VAAAA LOCO 
 
     let crashed = false
     for (let i = 1; i < SNAKE_BODY.length; i++) {
@@ -112,11 +112,6 @@ export function BodyCrash() {
         return crashed
 
     
-
-
-
-
-
 
         // let crashed = false
         // for(let i=1; i<SNAKE_BODY.length; i++ ){
