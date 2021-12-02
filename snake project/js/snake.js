@@ -1,6 +1,6 @@
 import { moviment, BorderCrash, BodyCrash} from './movements.js'
 import { POS_APPLE, update as updateApple} from './apple.js'
-import { SNAKE_SPEED } from './index.js'
+import { SNAKE_SPEED} from './index.js'
 
 const gameOverSound = new Audio('sounds/GameOver.mp3')
 const foodSound = new Audio('sounds/biteApple.mp3')
@@ -57,13 +57,6 @@ export function draw(GameBoard) {
         }
         GameBoard.appendChild(snakeElement)
     })
-}
-
-export function drawScore(ScoreBoard){
-    const scoreBoard = document.createElement('div')
-    const scoreText = document.createTextNode("SCORE:  " + score)
-    scoreBoard.appendChild(scoreText)
-    ScoreBoard.appendChild(scoreBoard)
 }
 
 
