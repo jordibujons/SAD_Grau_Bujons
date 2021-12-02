@@ -122,15 +122,5 @@ export function BodyCrash() {       //JA VA LOKOOOO HHAHAH
 }
 
     
-
-        // let crashed = false
-        // for(let i=1; i<SNAKE_BODY.length; i++ ){
-        //     if((SNAKE_BODY[0].x == SNAKE_BODY[i].x) && (SNAKE_BODY[0].y == SNAKE_BODY[i].y)){
-        //         console.log('bodyCrash')
-        //         crashed = true
-        //     }
-        // }
-        // return crashed
-    
     
 

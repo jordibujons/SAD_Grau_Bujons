@@ -41,6 +41,7 @@ export function update() {
         growUpSnake()
         foodSound.play()
         score++
+        /*SNAKE_SPEED++*/ //augment progressiu velocitat
     }
 }
 
