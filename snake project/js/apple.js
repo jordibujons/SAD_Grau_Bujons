@@ -1,13 +1,11 @@
 import {SNAKE_BODY} from'./snake.js'
 
 export var POS_APPLE = {x:5,y:13}
-export var pomaMenjada = false
 
 export function update(){
     let posOcupada = false
-    pomaMenjada = false
 
-    do{
+    do{ //generem nova posició de la poma de manera random, però sempre mentre la posició random no sigui on hi ha un SNAKE_BODY
         posOcupada = false
         let randomX = Math.floor(Math.random() * 25) +1     //numero random entre (0 i 24) +1, per tant, num entre 1 i 25
         let randomY = Math.floor(Math.random() * 25) +1
