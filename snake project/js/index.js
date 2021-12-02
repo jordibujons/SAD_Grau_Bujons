@@ -30,5 +30,4 @@ function draw(){
     drawScore(scoreBoard)
     drawSnake(gameBoard)
     drawApple(gameBoard)
-
 }

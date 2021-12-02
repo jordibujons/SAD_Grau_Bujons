@@ -1,6 +1,6 @@
-*{
+ *{
     font-family:'Gill Sans', monospace;
-}
+} 
 body{ /*configuració background*/
     height: 100vh; /*vh i vw fan que el background s'ajusti al tamany de la pantalla en % */
     width: 100vw;
@@ -19,9 +19,9 @@ body{ /*configuració background*/
     text-align:center;
     color: black;
     font-size: 4vmin;
-    /*font-family:'Courier New', Courier, monospace !important;*/ /* <-- INTENT CANVIAR FONT LLETRA NO FUNCIONA*/
+    /*font-family:'Courier New', Courier, monospace;*/
     margin-left: 1vmin; /*marge que el separa 1vmin del GameBoard*/
-    margin-bottom: 3vmin; /*marge que el separa 3vmin de la part inferior pantalla (alineat amb GameBoard)*/
+    margin-bottom: 0vmin; /* ABANS HI HAVIA 3vmin. marge que el separa 3vmin de la part inferior pantalla (alineat amb GameBoard)*/
     margin-top: auto; /*marge superior (necessari pq els items estan alineats al centre i sino el margin-bottom partiria del centre*/
     background-color: rgb(82, 160, 82);
     border: 2vmin solid transparent;
@@ -39,15 +39,6 @@ body{ /*configuració background*/
     border: 2vmin solid transparent;
     border-image: url(../images/borde.png) 45% round;
 }
-/*#start, .boardInfo{
-    font-size: 25;
-}
-
- .boardInfo{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px; 
-}*/
 
 .snakeHead{
     background-image: url("../images/cabeza.gif");
