@@ -32,8 +32,8 @@ body{ /*configuració background*/
     height: 90vmin; /*vmin fa que quan modifiquem el tamany de la finestra, s'ajusti a qualsevol llargada o amplada de finestra per veure sempre el taulell sencer(quadrat)*/
     width: 90vmin;
     display: grid;
-    grid-template-columns: repeat(25, 1fr); /*creant 20 columnes mateixa mida*/
-    grid-template-rows: repeat(25, 1fr); /*creant 20 files mateixa mida*/
+    grid-template-columns: repeat(25, 1fr); /*creant 25 columnes mateixa mida*/
+    grid-template-rows: repeat(25, 1fr); /*creant 25 files mateixa mida*/
     background: linear-gradient(rgb(149, 238, 149), rgb(82, 160, 82));
     /*border: .50vmin solid rgb(255, 252, 252);*/
     border: 2vmin solid transparent;

@@ -33,7 +33,7 @@ window.addEventListener('keydown', function (event) {   //utilitzem window no el
                 break;
             }
             moviment.x = 0;
-            moviment.y = 1; 
+            moviment.y = 1;
             console.log('AVALL')
             if (LAST_MOVE.x != 0 || LAST_MOVE.y != 1) { //només activem el so quan canviem de direcció (si pitxem més vegades la mateixa fletxa només sonarà el primer cop)
                 upDownSound.play()
@@ -120,7 +120,3 @@ export function BodyCrash() {       //JA VA LOKOOOO HHAHAH
 
     return crashed
 }
-
-    
-    
-

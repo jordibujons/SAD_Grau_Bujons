@@ -1,13 +1,14 @@
-import { moviment, BorderCrash, BodyCrash} from './movements.js'
-import { POS_APPLE, update as updateApple} from './apple.js'
-import { SNAKE_SPEED} from './index.js'
+import { moviment, BorderCrash, BodyCrash } from './movements.js'
+import { POS_APPLE, update as updateApple } from './apple.js'
+import { SNAKE_SPEED } from './index.js'
 
 const gameOverSound = new Audio('sounds/GameOver.mp3')
 const foodSound = new Audio('sounds/biteApple.mp3')
 
 export const LAST_MOVE = { x: 0, y: 0 } //guardem ultim moviment realitzat
-export const SNAKE_BODY = [{x: 13, y: 13}]  //posició (13,13) és el centre del taulell
+export const SNAKE_BODY = [{ x: 13, y: 13 }]  //posició (13,13) és el centre del taulell
 export var score = 0 //puntuació (número de pomes menjades)
+export var gameOver = false
 
 //constants per comparar quin ha estat l'últim moviment a growUpSnake()
 const LAST_MOVE_DOWN = { x: 0, y: 1 }
@@ -25,8 +26,9 @@ export function update() {
     //quan xoquem amb borde o amb cos
     if (BorderCrash() == true || BodyCrash() == true) {
         //game over
+        gameOver = true
         gameOverSound.play()
-        alert("Game Over")
+
     } else {    //serp avança
         SNAKE_BODY[0].x += moviment.x
         SNAKE_BODY[0].y += moviment.y
@@ -75,6 +77,3 @@ function growUpSnake() {
         SNAKE_BODY.push({ x: SNAKE_BODY[SNAKE_BODY.length - 1].x + 1, y: SNAKE_BODY[SNAKE_BODY.length - 1].y }) //creixem dreta (sumem x)
     }
 }
-
-
-

@@ -4,9 +4,11 @@
  body {
   font-family: "Montserrat", sans-serif;
 } 
-
 .navMenu {
+  margin: 0;
   position: absolute;
+  justify-content: space-between;
+  padding: 10px 0;
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -19,7 +21,8 @@
   text-transform: uppercase;
   font-weight: 700;
   display: inline-block;
-  width: 120px;
+  padding: 40px;
+  /* width: 120px; */
   transition: all 0.2s ease-in-out;
 }
 
@@ -33,27 +36,28 @@
   background: #fddb3a;
   border-radius: 50%;
   opacity: 0;
-  transform: translateX(30px);
+  transform: translate(220px, -30px);
   transition: all 0.2s ease-in-out;
 }
 
 .navMenu a:nth-child(1):hover ~ .dot {
-  transform: translateX(23px);
+  transform: translate(60px, -40px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
 
 .navMenu a:nth-child(2):hover ~ .dot {
-  transform: translateX(170px);
+  transform: translate(220px, -40px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
 
 .navMenu a:nth-child(3):hover ~ .dot {
-  transform: translateX(274px);
+  transform: translate(390px, -40px);
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
+
 
  .jittery{
     font:400 100px/1em Amatic SC;
