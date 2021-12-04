@@ -87,7 +87,7 @@ export function BorderCrash() {
 
 }
 
-export function BodyCrash() {       //JA VA LOKOOOO HHAHAH
+export function BodyCrash() {
 
     let crashed = false
     //per mirar si el cap està apunt de xocar amb el seu cos, recorrem SNAKE_BODY a partir de la posició 1 (no 0, el cap no pot xocar amb ell mateix)
@@ -117,6 +117,5 @@ export function BodyCrash() {       //JA VA LOKOOOO HHAHAH
             break;
         }
     }
-
     return crashed
 }

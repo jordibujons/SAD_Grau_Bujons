@@ -67,4 +67,60 @@
     color:#f06d06;
     display:inline-block
 }
+
 @keyframes jitter{ 50%{transform:skewY(0.7deg) skewX(-0.7deg) scale(1.006);} } 
+
+
+
+
+/* ara ve l'intent de menú de pausa */
+
+.jitteryMenu{
+  font:400 100px/1em Amatic SC;
+  text-align:top;
+  padding-top:1px;
+  animation:jitter 200ms linear infinite;
+  color:#f06d06;
+  display:inline-block
+}
+
+.pauseMenu{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  justify-content: center;
+  top:0;
+  left:0;
+}
+
+.background-image{
+  height: 100vh; 
+  width: auto;
+  display: flex;
+  margin: auto;
+  top: 70%;
+  left: 50%;
+}
+
+.pasueText{
+  background-color: red;
+  height: 100vh; 
+  width: auto;
+  position: absolute;
+  display: flex;
+  margin: auto;
+  top: 70%;
+  left: 50%;
+}
+.pasueText .headStyle{
+  background-color: rgb(68, 0, 255);
+  height: 100vh; 
+  width: auto;
+  position: absolute;
+  display: flex;
+  margin: auto;
+  top: 70%;
+  left: 50%;
+
+
+}
