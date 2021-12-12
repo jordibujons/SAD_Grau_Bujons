@@ -17,9 +17,6 @@ const LAST_MOVE_UP = { x: 0, y: -1 }
 const LAST_MOVE_RIGHT = { x: 1, y: 0 }
 const LAST_MOVE_LEFT = { x: -1, y: 0 }
 
-
-
-
 export function update() {
 
     for (let i = SNAKE_BODY.length - 2; i >= 0; i--) {    //l'última posició de la serp ens és igual pq desaperaixerà. Com que el nostre vector (serp) comença a 0, si fem (lenght -2) estarem apuntant a la penúltima pos de la serp 

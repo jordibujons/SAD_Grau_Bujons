@@ -67,7 +67,7 @@ window.addEventListener('keydown', function (event) {   //utilitzem window no el
             break;
 
         case SPACE_BAR:
-            //CONDICIÓ PER FER PAUSE
+            //completar
             console.log('ESPAI')
             break;
         default:
