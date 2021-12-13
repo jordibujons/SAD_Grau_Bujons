@@ -34,7 +34,7 @@ window.requestAnimationFrame(GameLoop)
 //Game Functions
 
 function update() {
-    //initGameMusic.play()
+    initGameMusic.play()
     updateSnake()
 }
 function draw() {
