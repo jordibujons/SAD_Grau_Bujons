@@ -15,7 +15,8 @@ function GameLoop(ctime) {
     if (gameOver) {
         initGameMusic.pause()
         if (confirm('You lost. Press ok to restart')) {
-            window.location = 'http://localhost:3000/snake%20project/index.html'
+            //window.location = 'http://localhost:3000/snake%20project/index.html'
+            window.location = '/'
         }
         return
     }
