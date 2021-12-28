@@ -1,3 +1,5 @@
+//AQUESTA FUNCIÓ NOMÉS SERVEIX PER L'EFECTE DE LES LLETRES DE LA INTERFÍCIE D'INICI DE JOC
+
 $(function () {
   var $jittery = $('.jittery'),
     aText = $jittery.text().split(''),
