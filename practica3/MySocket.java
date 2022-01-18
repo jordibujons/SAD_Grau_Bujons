@@ -1,4 +1,4 @@
-package practica3;
+package Practica3;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

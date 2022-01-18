@@ -1,4 +1,4 @@
-package practica3;
+package Practica3;
 
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 public class ClientGUI extends JFrame {
     public JFrame monguer = this;
-    public static final int SERVER_PORT = 4000;
+    public static final int SERVER_PORT = 3000;
     public static final String SERVER_HOST = "localhost";
     public static String userName, lastLine = "initial";
     public static MySocket sc = new MySocket(SERVER_HOST ,SERVER_PORT);

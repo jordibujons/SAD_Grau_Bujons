@@ -1,5 +1,4 @@
-
-package practica3;
+package Practica3;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,9 +14,9 @@ import java.nio.charset.Charset;
 
 class NIOServer implements Runnable {
     final Selector selector;
-    final static int PORT = 4000;
+    final static int PORT = 3000;
     final ServerSocketChannel SSChannel;
-    HashMap<String,MySocket> usersMap;
+    HashMap<String,ServerHandler> usersMap;
 
     NIOServer(int port) throws IOException {
         selector = Selector.open();
@@ -26,7 +25,7 @@ class NIOServer implements Runnable {
         SSChannel.configureBlocking(false);
         SelectionKey selkey = SSChannel.register(selector, SelectionKey.OP_ACCEPT);
         selkey.attach(new Acceptor());
-        usersMap = new HashMap<String,MySocket>();
+        usersMap = new HashMap<String,ServerHandler>();
     }
     public static void main(String[] args) {
         try {
@@ -74,7 +73,7 @@ class NIOServer implements Runnable {
 
                     if (hasNick=="true"){
                         System.out.println(channel.toString() + ": Nick assigned = "+nickName);
-                        usersMap.put(nickName,new MySocket(selector, channel, nickName, usersMap));
+                        usersMap.put(nickName,new ServerHandler(selector, channel, nickName, usersMap));
                         System.out.println("Welcome "+nickName+"!!");
                         String nickNames=usersMap.keySet().toString();
                         nickNames=nickNames.replace("[","");

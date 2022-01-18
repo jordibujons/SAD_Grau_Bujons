@@ -8,6 +8,20 @@
             "type": "java",
             "name": "Launch Client",
             "request": "launch",
+            "mainClass": "practica2.Client",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Server",
+            "request": "launch",
+            "mainClass": "practica2.Server",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Client",
+            "request": "launch",
             "mainClass": "practica3.grafic.view.Client",
             "projectName": "SAD_Grau_Bujons_daed2895"
         },

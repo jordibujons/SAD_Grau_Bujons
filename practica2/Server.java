@@ -15,7 +15,7 @@ public class Server {
     public static ConcurrentHashMap<String, Handler> clientsMap = new ConcurrentHashMap<String, Handler>();
 
     public static void main(String[] args) throws Exception {
-        System.out.println("The server is running on port" + PORT);
+        System.out.println("The server is running on port " + PORT);
         var pool = Executors.newFixedThreadPool(500);
         try (MyServerSocket listener = new MyServerSocket(PORT)) {
             while (true) {
