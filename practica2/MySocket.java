@@ -25,7 +25,7 @@ public class MySocket extends Socket{
    public void MyConnect(SocketAddress endpoint){
     
        try {
-        this.sc.connect(endpoint); //Connects this socket to the server.
+        this.sc.connect(endpoint);
        } catch (IOException ex) {
         System.err.println(ex);
        }
@@ -33,7 +33,7 @@ public class MySocket extends Socket{
 
    public InputStream MyGetInputStream(){
        try {
-           return sc.getInputStream(); //returns an input stream for reading bytes from this socket.
+           return sc.getInputStream(); 
        } catch (IOException ex) {
         System.err.println(ex);
        }
@@ -43,7 +43,7 @@ public class MySocket extends Socket{
    public OutputStream MyGetOutputStream(){
       
        try {
-           return sc.getOutputStream(); //Returns an output stream for this socket
+           return sc.getOutputStream(); 
        } catch (IOException ex) {
         System.err.println(ex);
        }
@@ -52,8 +52,8 @@ public class MySocket extends Socket{
    @Override
    public void close(){
     try {
-        sc.close(); //Closing this socket will also close the socket's InputStream and OutputStream.
-                   // If this socket has an associated channel then the channel is closed as well.
+        sc.close(); 
+                   
     } catch (IOException ex) {
      System.err.println(ex);
     }

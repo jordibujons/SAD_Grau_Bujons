@@ -1,3 +1,5 @@
+package practica2;
+
 import java.io.PrintWriter;
 import java.util.concurrent.Executors;
 import java.io.BufferedReader;
@@ -9,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Server {
-    private static final int PORT = 5000;
+    private static final int PORT = 3000;
     public static ConcurrentHashMap<String, Handler> clientsMap = new ConcurrentHashMap<String, Handler>();
 
     public static void main(String[] args) throws Exception {
@@ -17,7 +19,6 @@ public class Server {
         var pool = Executors.newFixedThreadPool(500);
         try (MyServerSocket listener = new MyServerSocket(PORT)) {
             while (true) {
-              //  pool.execute(new Handler(listener.accept()));
               pool.execute(new Handler(listener.accept()));
             }
         }
@@ -72,7 +73,6 @@ public class Server {
                             System.out.println("receive message: '" + this.lastMsg + "'");
                             if (this.lastMsg.equals("exit")) {
                                 clientsMap.remove(this.clientName);
-                                // Li diem a tots els clients que ell marxa:
                                 Server.clientsMap.values().stream().map((ms) -> {
                                     ms.out.print(">>"+this.clientName + " has left<<\n");
                                     return ms;
@@ -87,10 +87,10 @@ public class Server {
                         System.out.println(e);
                     }
                    
-                if (!"".equals(this.lastMsg)) { // si l'ultim missatge no es buit
+                if (!"".equals(this.lastMsg)) { 
               
                     Server.clientsMap.values().stream().map((ms) -> {
-                        if (!ms.clientName.equals(this.clientName)) { // mirem que no siguem nosaltres
+                        if (!ms.clientName.equals(this.clientName)) { 
                             ms.out.print("\t>"+this.clientName + ": " + this.lastMsg + "\n");
                         }
                         return ms;
