@@ -1,39 +1,37 @@
-package practica2;
+package Practica2;
 
 import java.io.*;
 import java.net.*;
 
-
 public class MyServerSocket extends ServerSocket {
     private ServerSocket serverSocket;
     private MySocket socket;
-    public MyServerSocket(int port) throws IOException{
+
+    public MyServerSocket(int port) throws IOException {
 
         this.serverSocket = new ServerSocket(port);
     }
 
     @Override
-    public MySocket accept(){
+    public MySocket accept() {
         try {
-            this.socket = new MySocket(serverSocket.accept()); 
-                                                            
+            this.socket = new MySocket(serverSocket.accept());
+
             return socket;
         } catch (IOException ex) {
             System.err.println(ex);
         }
-        return  null;
+        return null;
     }
 
-
     @Override
-    public void close(){
+    public void close() {
         try {
-            this.serverSocket.close(); 
-                                        
+            this.serverSocket.close();
+
         } catch (IOException ex) {
             System.err.println(ex);
         }
     }
-  
-}
 
+}

@@ -1,4 +1,4 @@
-package practica2;
+package Practica2;
 
 import java.io.PrintWriter;
 import java.util.concurrent.Executors;
@@ -16,7 +16,7 @@ public class Server {
         var pool = Executors.newFixedThreadPool(500);
         try (MyServerSocket listener = new MyServerSocket(PORT)) {
             while (true) {
-              pool.execute(new Handler(listener.accept()));
+                pool.execute(new Handler(listener.accept()));
             }
         }
     }
@@ -50,16 +50,16 @@ public class Server {
                     if (!clientsMap.containsKey(this.clientName)) {
 
                         Server.clientsMap.values().stream().map((ms) -> {
-                            ms.out.print(">>"+this.clientName + " has joined the chat<<\n");
+                            ms.out.print(this.clientName + " has joined the chat\n");
                             return ms;
                         }).forEachOrdered((ms) -> {
                             ms.out.flush();
                         });
-                        System.out.println("New User: " + this.clientName);
+                        System.out.println("New user: " + this.clientName);
                         clientsMap.put(this.clientName, this);
                         username = true;
                     } else {
-                        this.out.println("Username already taken :(\n");
+                        this.out.println("Username already exists\n");
                         this.out.flush();
                     }
                 }
@@ -71,7 +71,7 @@ public class Server {
                             if (this.lastMsg.equals("exit")) {
                                 clientsMap.remove(this.clientName);
                                 Server.clientsMap.values().stream().map((ms) -> {
-                                    ms.out.print(">>"+this.clientName + " has left<<\n");
+                                    ms.out.print(this.clientName + " has left\n");
                                     return ms;
                                 }).forEachOrdered((ms) -> {
                                     ms.out.flush();
@@ -83,24 +83,23 @@ public class Server {
                     } catch (IOException e) {
                         System.out.println(e);
                     }
-                   
-                if (!"".equals(this.lastMsg)) { 
-              
-                    Server.clientsMap.values().stream().map((ms) -> {
-                        if (!ms.clientName.equals(this.clientName)) { 
-                            ms.out.print("\t>"+this.clientName + ": " + this.lastMsg + "\n");
-                        }
-                        return ms;
 
-                    }).forEachOrdered((ms) -> {
-                        ms.out.flush();
-                    });
-                }
-                this.lastMsg = "";
-                }
-                
+                    if (!"".equals(this.lastMsg)) {
 
-            } 
+                        Server.clientsMap.values().stream().map((ms) -> {
+                            if (!ms.clientName.equals(this.clientName)) {
+                                ms.out.print(this.clientName + ": " + this.lastMsg + "\n");
+                            }
+                            return ms;
+
+                        }).forEachOrdered((ms) -> {
+                            ms.out.flush();
+                        });
+                    }
+                    this.lastMsg = "";
+                }
+
+            }
             try {
                 this.in.close();
             } catch (IOException ex) {
