@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class Client {
-    public static final int serverPort = 3000;
+    public static final int serverPort = 5000;
     public static final String serverHost = "localhost";
 
     public static void main(String[] args) throws IOException{

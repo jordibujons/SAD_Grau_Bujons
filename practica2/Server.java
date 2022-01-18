@@ -3,15 +3,12 @@ package practica2;
 import java.io.PrintWriter;
 import java.util.concurrent.Executors;
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Server {
-    private static final int PORT = 3000;
+    private static final int PORT = 5000;
     public static ConcurrentHashMap<String, Handler> clientsMap = new ConcurrentHashMap<String, Handler>();
 
     public static void main(String[] args) throws Exception {
@@ -58,7 +55,7 @@ public class Server {
                         }).forEachOrdered((ms) -> {
                             ms.out.flush();
                         });
-                        System.out.println("New User: " + this.clientName + ":)");
+                        System.out.println("New User: " + this.clientName);
                         clientsMap.put(this.clientName, this);
                         username = true;
                     } else {
