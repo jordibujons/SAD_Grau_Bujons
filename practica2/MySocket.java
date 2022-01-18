@@ -1,59 +1,62 @@
 package practica2;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.*;
+
 
 public class MySocket extends Socket{
+   private Socket sc; 
 
-    private String hostName, userName;
-    private int port;
+   public MySocket(String host, int port) {
     
+    try {
+        this.sc = new Socket(host, port); 
+       } catch (IOException ex) {
+        System.err.println(ex);
+       }
+   }
+   
+   public MySocket(Socket socket){
+       this.sc = socket;
+   }
 
-    public MySocket(String host, int port) {
-        this.hostName = host;
-        this.port = port;
-    }
-
-    public void execute(){
-        try {
-            Socket socket = new Socket(hostName, port);
-
-            System.out.println("Connected to the chat server");
+   public void MyConnect(SocketAddress endpoint){
     
-            new WriteThread(socket, this).start();
-            new ReadThread(socket, this).start();
-            
-        } catch (UnknownHostException e) {
-            System.out.println("Server not found: " + e.getMessage());
-        } catch(IOException e){
-            System.out.println("I/O Error: " + e.getMessage());
-        }
-    }   
+       try {
+        this.sc.connect(endpoint); //Connects this socket to the server.
+       } catch (IOException ex) {
+        System.err.println(ex);
+       }
+   }
 
-
-    public void SetUserName(String userName){
-        this.userName = userName;
+   public InputStream MyGetInputStream(){
+       try {
+           return sc.getInputStream(); //returns an input stream for reading bytes from this socket.
+       } catch (IOException ex) {
+        System.err.println(ex);
+       }
+       return null;
+      
+   }
+   public OutputStream MyGetOutputStream(){
+      
+       try {
+           return sc.getOutputStream(); //Returns an output stream for this socket
+       } catch (IOException ex) {
+        System.err.println(ex);
+       }
+       return null;
+   }
+   @Override
+   public void close(){
+    try {
+        sc.close(); //Closing this socket will also close the socket's InputStream and OutputStream.
+                   // If this socket has an associated channel then the channel is closed as well.
+    } catch (IOException ex) {
+     System.err.println(ex);
     }
-
-    public String getUserName(){
-        return this.userName;
-    }
-
-    public static void main(String[] args) {
-        if(args.length < 2){
-            System.out.println("Please try again \n");
-            System.out.println("Syntax: java MySocket <hostname> <port-number>");
-            System.exit(0);
-        }
-        String hostName = args[0];
-        int port = Integer.parseInt(args[1]);
-
-        MySocket client = new MySocket(hostName, port);
-        client.execute();
-    }
+   }
+   
 }
-
-
-
