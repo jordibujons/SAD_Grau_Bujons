@@ -1,3 +1,5 @@
+package practica2;
+
 import java.io.*;
 import java.net.*;
 
@@ -13,8 +15,8 @@ public class MyServerSocket extends ServerSocket {
     @Override
     public MySocket accept(){
         try {
-            this.socket = new MySocket(serverSocket.accept()); //Listens for a connection to be made to this socket and accepts it. 
-                                                            //The method blocks until a connection is made.
+            this.socket = new MySocket(serverSocket.accept()); 
+                                                            
             return socket;
         } catch (IOException ex) {
             System.err.println(ex);
@@ -26,8 +28,8 @@ public class MyServerSocket extends ServerSocket {
     @Override
     public void close(){
         try {
-            this.serverSocket.close(); //Closes this socket. Any thread currently blocked in accept() will throw a SocketException.
-                                        //If this socket has an associated channel then the channel is closed as well.
+            this.serverSocket.close(); 
+                                        
         } catch (IOException ex) {
             System.err.println(ex);
         }
