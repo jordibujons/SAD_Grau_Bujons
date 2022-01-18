@@ -1,7 +1,7 @@
 package teoria;
 
-import practica2.MyServerSocket;
-import practica2.MySocket;
+import Practica2.MyServerSocket;
+import Practica2.MySocket;
 
 public class EchoServer {
 

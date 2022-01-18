@@ -3,7 +3,7 @@ package teoria;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import practica2.MySocket;
+import Practica2.MySocket;
 
 public class EchoClient {
 
