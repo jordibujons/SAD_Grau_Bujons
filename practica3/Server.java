@@ -89,9 +89,7 @@ public class Server {
 		}
     }
     
-    /**
-     * Returns all the names of the clients
-     */
+    //Retorna els noms dels clients
     String getUserNames() {
         String userNames = "";
         for (String key : this.names.keySet()) {
@@ -101,9 +99,9 @@ public class Server {
 	}
 	
 
-     /**
-     * Returns true if there are other users connected 
-     */
+     
+     //Retorna true si hi ha altres usuaris conectats
+    
     boolean hasUsers() {
         return !this.names.isEmpty();
     }

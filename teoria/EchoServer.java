@@ -1,4 +1,7 @@
-package practica2;
+package teoria;
+
+import practica2.MyServerSocket;
+import practica2.MySocket;
 
 public class EchoServer {
 
@@ -11,7 +14,7 @@ public class EchoServer {
                 public void run() {
                     String linia;
                     while ((linia = s.readLine()) != null) {
-                        s.println(line);
+                        s.println(linia);
                     }
                 }
             }.start();

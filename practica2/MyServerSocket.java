@@ -61,7 +61,7 @@ public class MyServerSocket {
         this.clients.put(userName, server);
     }
 
-    void removeUser(String userName, server aUser){
+    void removeUser(String userName, Server aUser){
         clients.remove(userName);
         System.out.println("L'usuari "+userName+" ha abandonat la sessió.");
     }

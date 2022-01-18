@@ -52,9 +52,7 @@ public class MySocket extends Socket{
 
         MySocket client = new MySocket(hostName, port);
         client.execute();
-
     }
-
 }
 
 

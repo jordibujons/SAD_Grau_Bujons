@@ -5,6 +5,48 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch MySocket",
+            "request": "launch",
+            "mainClass": "practica2.MySocket",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
+            "type": "java",
+            "name": "Launch ChatClient",
+            "request": "launch",
+            "mainClass": "practica2.ChatClient",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Client",
+            "request": "launch",
+            "mainClass": "practica3.grafic.view.Client",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Client",
+            "request": "launch",
+            "mainClass": "practica3.Client",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
+            "type": "java",
+            "name": "Launch Server",
+            "request": "launch",
+            "mainClass": "practica3.Server",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
+            "type": "java",
+            "name": "Launch MyServerSocket",
+            "request": "launch",
+            "mainClass": "practica2.MyServerSocket",
+            "projectName": "SAD_Grau_Bujons_4a68ebbf"
+        },
+        {
             "name": "gcc - Compilar y depurar el archivo activo",
             "type": "cppdbg",
             "request": "launch",

@@ -1,7 +1,9 @@
-package practica2;
+package teoria;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import practica2.MySocket;
 
 public class EchoClient {
 
@@ -17,7 +19,7 @@ public class EchoClient {
                     
                 } catch (Exception e) {
                     while ((linia = kbd.readLine()) != null) {
-                        sc.println(line);
+                        sc.println(linia);
                     }
                 }
                 // close sc for waiting (tancar connexió del thread input del client al servidor) nose si té a veure pero ctrl+d tanca la connexió
@@ -33,7 +35,7 @@ public class EchoClient {
 
                 String linia;
                 while ((linia = sc.readLine()) != null) {
-                    System.out.println(line);
+                    System.out.println(linia);
                 }
             }
         }.start();
